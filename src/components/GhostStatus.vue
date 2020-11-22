@@ -1,5 +1,5 @@
 <template>
-  <div class="ghostStatusContainer">
+  <div @click="$emit('click')"  class="ghostStatusContainer">
     <h3>{{ status.name }}</h3>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   h3{
     margin: 0.1em;
     text-align: left;
-    user-select: none;
+    cursor: pointer;
   }
 }
 </style>
