@@ -2,12 +2,24 @@
   <div class="clueToolContainer">
     <h1>Evidence</h1>
     <div class="clueOptionContainer">
-      <ClueOption v-for="(option, optionIndex) in clues" @click="optionSelected(option)" :status="option" />
+      <ClueOption
+        v-for="(option, optionIndex) in clues"
+        v-bind:key="optionIndex"
+        @click="optionSelected(option)"
+        :status="option" />
     </div>
     <h1>Remaining Ghosts</h1>
     <div class="remainingGhostsContainer">
-      <GhostStatus v-for="(ghost, ghostIndex) in ghosts" v-if="ghost.remaining" :status="ghost"/>
+      <template
+        v-for="(ghost, ghostIndex) in ghosts" >
+        <GhostStatus
+          v-bind:key="ghostIndex"
+          @click="ghostSelected(ghost)"
+          v-if="ghost.remaining"
+          :status="ghost"/>
+      </template>
     </div>
+    <div @click="resetAll()" class="resetAll">Reset</div>
   </div>
 </template>
 
@@ -65,11 +77,18 @@ export default {
       for(let i = 0; i < this.ghosts.length; i++){
         if(this.ghosts[i].remaining){
           for(let j = 0; j < this.ghosts[i].evidence.length; j++){
-            console.log(this.ghosts[i].evidence[j])
             this.clues[this.ghosts[i].evidence[j]].eliminated = false;
           }
         }
       }
+    },
+
+    resetAll() {
+      this.ghosts.map(ghost => ghost.remaining = true);
+      this.clues.map(clue => {
+        clue.found = false;
+        clue.eliminated = false;
+      });
     },
     updateStatus(){
       this.updateGhosts();
@@ -81,7 +100,14 @@ export default {
         this.updateStatus();
       }
     },
-
+    ghostSelected(ghost) {
+      this.resetAll();
+      this.clues.map(clue => {
+        const found = ghost.evidence.find(ev =>ev === clue.id);
+        clue.found = typeof found === 'number';
+        clue.eliminated =  typeof found !== 'number';
+      });
+    },
   },
 
 }
@@ -103,7 +129,12 @@ export default {
     margin:0;
     margin-bottom: 0.3em;
     margin-top: 0.3em;
-    user-select: none;
   }
+}
+.resetAll {
+  padding: .3rem 1rem;
+  margin-top: 1rem;
+  border: 1px solid black;
+  cursor: pointer;
 }
 </style>

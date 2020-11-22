@@ -29,7 +29,6 @@ export default {
     margin: 0;
     left: 0;
     right: 0;
-    user-select: none;
   }
   &:hover{
     background-color: rgba(50,50,70,0.45);
