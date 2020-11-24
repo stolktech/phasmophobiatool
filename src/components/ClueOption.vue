@@ -1,5 +1,5 @@
 <template>
-  <div @click="$emit('click')" :class="[status.found ? 'found' : 'notFound', status.eliminated ? 'eliminated': '', 'optionContainer']">
+  <div @click="$emit('click')" :class="[status.found ? 'found' : 'notFound', status.eliminated ? 'eliminated': '', 'optionContainer']" :style="{backgroundImage: 'url(' + status.image + ')'}">
     <h4>{{ status.name }}</h4>
   </div>
 </template>
@@ -23,15 +23,18 @@ export default {
   border-radius: 7%;
   border: 2px inset rgba(0,0,0,0.2);
   box-shadow: 2px 3px rgba(0,0,0,0.1);
+  background-repeat: no-repeat;
   h4 {
     position: absolute;
     bottom: 0;
     margin: 0;
     left: 0;
     right: 0;
+    text-shadow: 2px 2px black;
+    color: white;
   }
   &:hover{
-    background-color: rgba(50,50,70,0.45);
+    border-color: rgba(50,50,70,0.45);
     cursor: pointer;
   }
   &:active{
