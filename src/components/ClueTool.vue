@@ -35,12 +35,12 @@ export default {
   data(){
     return {
       clues: [
-        {name:"Ghost Orb", id:0, found:false, eliminated:false, image: '/orbs.png'},
-        {name:"Spirit Box", id:1, found:false, eliminated:false, image: '/spiritbox.png'},
-        {name:"Fingerprints", id:2, found:false, eliminated:false, image: '/fingerprints.png'},
-        {name:"EMF Lvl 5", id:3, found:false, eliminated:false, image: '/emfreader.png'},
-        {name:"Freezing Temps", id:4, found:false, eliminated:false, image: '/freezingtemps.png'},
-        {name:"Ghost Writing", id:5, found:false, eliminated:false, image: '/ghostwriting.png'},
+        {name:"Ghost Orb", id:0, found:false, eliminated:false, image: './orbs.png'},
+        {name:"Spirit Box", id:1, found:false, eliminated:false, image: './spiritbox.png'},
+        {name:"Fingerprints", id:2, found:false, eliminated:false, image: './fingerprints.png'},
+        {name:"EMF Lvl 5", id:3, found:false, eliminated:false, image: './emfreader.png'},
+        {name:"Freezing Temps", id:4, found:false, eliminated:false, image: './freezingtemps.png'},
+        {name:"Ghost Writing", id:5, found:false, eliminated:false, image: './ghostwriting.png'},
       ],
       ghosts: [
         {name:"Demon", evidence:[1,4,5], remaining:true},
