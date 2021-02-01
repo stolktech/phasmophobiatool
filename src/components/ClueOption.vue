@@ -53,6 +53,7 @@ export default {
   }
 }
 .eliminated {
+  opacity: .2;
   background-color: rgba(240,120,120,0.8);
 
   &:hover{
